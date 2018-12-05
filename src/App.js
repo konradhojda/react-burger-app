@@ -6,18 +6,9 @@ class App extends Component {
 
     state = {
         persons: [
-            {
-                name: 'Andrew',
-                age: 20
-            },
-            {
-                name: 'Antony',
-                age: 25
-            },
-            {
-                name: 'Patricia',
-                age: 22
-            }
+            {name: 'Andrew', age: 20},
+            {name: 'Antony', age: 25},
+            {name: 'Patricia',age: 22}
         ],
         showPersons: false
     };
@@ -25,18 +16,9 @@ class App extends Component {
     changeName = () => {
         this.setState({
             persons: [
-                {
-                    name: 'OtherName 1',
-                    age: 20
-                },
-                {
-                    name: 'Antony',
-                    age: 25
-                },
-                {
-                    name: 'Patricia Patricia',
-                    age: 25
-                }
+                {name: 'OtherName 1',age: 20},
+                {name: 'Antony',age: 25},
+                {name: 'Patricia Patricia',age: 25}
             ]
         })
     };
@@ -44,18 +26,9 @@ class App extends Component {
     changedValue = (e) => {
         this.setState({
             persons: [
-                {
-                    name: e.target.value,
-                    age: 20
-                },
-                {
-                    name: 'Antony',
-                    age: 25
-                },
-                {
-                    name: 'Patricia',
-                    age: 22
-                }
+                {name: e.target.value,age: 20},
+                {name: 'Antony',age: 25},
+                {name: 'Patricia',age: 22}
             ]
         })
     };
@@ -73,13 +46,10 @@ class App extends Component {
         if (this.state.showPersons) {
             persons = (
                 <div>
-                    <Person changed={this.changedValue}
-                            name={this.state.persons[0].name}
-                            age={this.state.persons[0].age}/>
-                    <Person name={this.state.persons[1].name}
-                            age={this.state.persons[1].age}/>
-                    <Person name={this.state.persons[2].name}
-                            age={this.state.persons[2].age}/>
+                    {this.state.persons.map(person => {
+                        return <Person name={person.name}
+                                       age={person.age}/>
+                    })}
                 </div>
             );
         }
