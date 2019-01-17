@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import Person from './Person/Person';
 import './App.css';
 
+
+
 class App extends Component {
 
     state = {
@@ -12,6 +14,8 @@ class App extends Component {
         ],
         showPersons: false
     };
+
+
 
     changedValue = (e, id) => {
 
@@ -33,8 +37,9 @@ class App extends Component {
     };
 
     togglePersons = () => {
+        const doesShow = this.state.showPersons
         this.setState({
-            showPersons: true
+            showPersons: !doesShow
         });
     };
 
@@ -45,6 +50,15 @@ class App extends Component {
     };
 
     render() {
+
+        const style = {
+            backgroundColor: 'green',
+            font: 'inherit',
+            color: 'white',
+            border: '1px solid blue',
+            padding: '8px',
+            cursor: 'pointer'
+        };
 
         let persons = null;
 
@@ -60,13 +74,23 @@ class App extends Component {
                     })}
                 </div>
             );
+            style.backgroundColor = 'red';
         }
+
+        let classes = [];
+         if (this.state.persons.length <= 2) {
+             classes.push('red');
+         }
+         if (this.state.persons.length <= 1) {
+             classes.push('bold');
+         }
+
 
         return (
             <div className="App">
                 <h1>Simple React Header</h1>
-                <p>It's working!</p>
-                <button onClick={this.togglePersons}>Click to switch the name</button>
+                <p className={classes.join(' ')}>It's working!</p>
+                <button style={style} onClick={this.togglePersons}>Click to switch the name</button>
                 {persons}
             </div>
         );
