@@ -49,16 +49,8 @@ class App extends Component {
 
     render() {
 
-        const style = {
-            backgroundColor: 'green',
-            font: 'inherit',
-            color: 'white',
-            border: '1px solid blue',
-            padding: '8px',
-            cursor: 'pointer',
-        };
-
         let persons = null;
+        let buttonClass = '';
 
         if (this.state.showPersons) {
             persons = (
@@ -72,7 +64,7 @@ class App extends Component {
                     })}
                 </div>
             );
-            style.backgroundColor = 'red';
+            buttonClass = classes.Red;
         }
 
         const assignedClass = [];
@@ -85,14 +77,13 @@ class App extends Component {
 
 
         return (
-                <div className={classes.App}>
-                    <h1>Simple React Header</h1>
-                    <p className={assignedClass.join(' ')}>It's working!</p>
-                    <button style={style} onClick={this.togglePersons}>Click to switch the
-                        name
-                    </button>
-                    {persons}
-                </div>
+            <div className={classes.App}>
+                <h1>Simple React Header</h1>
+                <p className={assignedClass.join(' ')}>It's working!</p>
+                <button className={buttonClass} onClick={this.togglePersons}>Click to switch the
+                </button>
+                {persons}
+            </div>
         );
     }
 }
