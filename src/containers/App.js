@@ -6,6 +6,20 @@ import Cockpit from '../components/Cockpit/Cockpit'
 
 class App extends Component {
 
+    constructor(props) {
+        super(props);
+        console.log('[App.js] inside constructor!', props)
+    }
+
+    componentWillMount() {
+        console.log('[App.js] inside ComponentWillMount()!')
+    }
+
+    componentDidMount() {
+        console.log('[App.js] inside ComponentDidMount!')
+    }
+
+
     state = {
         persons: [
             {id: '1', name: 'Andrew', age: 20},
@@ -49,15 +63,15 @@ class App extends Component {
     };
 
     render() {
-
+        console.log('[App.js] inside render method!');
         let persons = null;
 
         if (this.state.showPersons) {
             persons = (
-                    <Persons
-                        persons={this.state.persons}
-                        clicked={this.deletePerson}
-                        changed={this.changedValue}/>
+                <Persons
+                    persons={this.state.persons}
+                    clicked={this.deletePerson}
+                    changed={this.changedValue}/>
             );
         }
 
@@ -67,7 +81,7 @@ class App extends Component {
                 <Cockpit
                     showPersons={this.state.showPersons}
                     persons={this.state.persons}
-                clicked={this.togglePersons}/>
+                    clicked={this.togglePersons}/>
                 {persons}
             </div>
         );
