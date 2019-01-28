@@ -4,4 +4,4 @@
 
 ## Running project
 
-* Just type in console npm install, after installation type in console npm run and see project.
+* Just type in console npm install, after installation type in console npm run and see project..
